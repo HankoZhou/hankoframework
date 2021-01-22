@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.pig4cloud.pig.gateway.config;
+package com.hanko.gateway.config;
 
-import com.pig4cloud.pig.gateway.handler.ImageCodeHandler;
+import com.hanko.gateway.handler.ImageCodeHandler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;

@@ -14,24 +14,23 @@
  * limitations under the License.
  */
 
-package com.pig4cloud.pig.gateway;
+package com.hanko.gateway.config;
 
-import com.pig4cloud.pig.common.swagger.annotation.EnablePigSwagger2;
-import org.springframework.boot.SpringApplication;
-import org.springframework.cloud.client.SpringCloudApplication;
+import org.springframework.cloud.gateway.filter.ratelimit.KeyResolver;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import reactor.core.publisher.Mono;
 
 /**
  * @author lengleng
- * @date 2018年06月21日
- * <p>
- * 网关应用
+ * @date 2019/2/1 路由限流配置
  */
-@EnablePigSwagger2
-@SpringCloudApplication
-public class PigGatewayApplication {
+@Configuration
+public class RateLimiterConfiguration {
 
-	public static void main(String[] args) {
-		SpringApplication.run(PigGatewayApplication.class, args);
+	@Bean(value = "remoteAddrKeyResolver")
+	public KeyResolver remoteAddrKeyResolver() {
+		return exchange -> Mono.just(exchange.getRequest().getRemoteAddress().getAddress().getHostAddress());
 	}
 
 }

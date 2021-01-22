@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package com.pig4cloud.pig.gateway.filter;
+package com.hanko.gateway.filter;
 
 import cn.hutool.core.util.StrUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hanko.gateway.config.GatewayConfigProperties;
 import com.pig4cloud.pig.common.core.constant.CacheConstants;
 import com.pig4cloud.pig.common.core.constant.SecurityConstants;
 import com.pig4cloud.pig.common.core.exception.ValidateCodeException;
 import com.pig4cloud.pig.common.core.util.R;
 import com.pig4cloud.pig.common.core.util.WebUtils;
-import com.pig4cloud.pig.gateway.config.GatewayConfigProperties;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;

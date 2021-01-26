@@ -19,25 +19,25 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.pig4cloud</groupId>
-		<artifactId>pig</artifactId>
+		<groupId>com.hanko</groupId>
+		<artifactId>hanko</artifactId>
 		<version>3.0.3</version>
 	</parent>
 
-	<artifactId>pig-common</artifactId>
+	<artifactId>common</artifactId>
 	<packaging>pom</packaging>
 
-	<description>pig 公共聚合模块</description>
+	<description>公共聚合模块</description>
 
 	<modules>
-		<module>pig-common-core</module>
-		<module>pig-common-datasource</module>
-		<module>pig-common-job</module>
-		<module>pig-common-log</module>
-		<module>pig-common-mybatis</module>
-		<module>pig-common-security</module>
-		<module>pig-common-feign</module>
-		<module>pig-common-swagger</module>
-		<module>pig-common-test</module>
+		<module>common-core</module>
+		<module>common-datasource</module>
+		<module>common-job</module>
+		<module>common-log</module>
+		<module>common-mybatis</module>
+		<module>common-security</module>
+		<module>common-feign</module>
+		<module>common-swagger</module>
+		<module>common-test</module>
 	</modules>
 </project>

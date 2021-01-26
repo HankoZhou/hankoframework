@@ -95,7 +95,7 @@ mvn archetype:generate \
        -DgroupId=com.pig4cloud \
        -DartifactId=demo \
        -Dversion=1.0.0-SNAPSHOT \
-       -Dpackage=com.pig4cloud.pig.demo \
+       -Dpackage=com.hanko.demo \
        -DarchetypeGroupId=com.pig4cloud.archetype \
        -DarchetypeArtifactId=pig-gen \
        -DarchetypeVersion=3.0.3 \

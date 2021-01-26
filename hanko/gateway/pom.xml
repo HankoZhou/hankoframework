@@ -19,15 +19,15 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.pig4cloud</groupId>
-		<artifactId>pig</artifactId>
+		<groupId>com.hanko</groupId>
+		<artifactId>hanko</artifactId>
 		<version>3.0.3</version>
 	</parent>
 
-	<artifactId>pig-gateway</artifactId>
+	<artifactId>gateway</artifactId>
 	<packaging>jar</packaging>
 
-	<description>pig 服务网关，基于 spring cloud gateway</description>
+	<description>服务网关，基于 spring cloud gateway</description>
 
 	<dependencies>
 		<!--gateway 网关依赖,内置webflux 依赖-->
@@ -63,7 +63,7 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-loadbalancer</artifactId>
 		</dependency>
-		<!--验证码 源码： https://github.com/pig-mesh/easy-captcha -->
+		<!--验证码 源码： https://github.com/mesh/easy-captcha -->
 		<dependency>
 			<groupId>com.pig4cloud.plugin</groupId>
 			<artifactId>captcha-spring-boot-starter</artifactId>
@@ -71,13 +71,15 @@
 		</dependency>
 		<!-- 工具包依赖 -->
 		<dependency>
-			<groupId>com.pig4cloud</groupId>
-			<artifactId>pig-common-core</artifactId>
+			<groupId>com.hanko</groupId>
+			<artifactId>common-core</artifactId>
+			<version>${common.version}</version>
 		</dependency>
 		<!--接口文档-->
 		<dependency>
-			<groupId>com.pig4cloud</groupId>
-			<artifactId>pig-common-swagger</artifactId>
+			<groupId>com.hanko</groupId>
+			<artifactId>common-swagger</artifactId>
+			<version>${common.version}</version>
 		</dependency>
 	</dependencies>
 

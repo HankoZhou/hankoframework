@@ -19,12 +19,12 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.pig4cloud</groupId>
-		<artifactId>pig-upms</artifactId>
+		<groupId>com.hanko</groupId>
+		<artifactId>upms</artifactId>
 		<version>3.0.3</version>
 	</parent>
 
-	<artifactId>pig-upms-api</artifactId>
+	<artifactId>upms-api</artifactId>
 	<packaging>jar</packaging>
 
 	<description>pig 通用用户权限管理系统公共api模块</description>
@@ -33,8 +33,9 @@
 	<dependencies>
 		<!--core 工具类-->
 		<dependency>
-			<groupId>com.pig4cloud</groupId>
-			<artifactId>pig-common-core</artifactId>
+			<groupId>com.hanko</groupId>
+			<artifactId>common-core</artifactId>
+			<version>${common.version}</version>
 		</dependency>
 		<!--feign 依赖-->
 		<dependency>
@@ -43,8 +44,9 @@
 		</dependency>
 		<!--断路器依赖-->
 		<dependency>
-			<groupId>com.pig4cloud</groupId>
-			<artifactId>pig-common-feign</artifactId>
+			<groupId>com.hanko</groupId>
+			<artifactId>common-feign</artifactId>
+			<version>${common.version}</version>
 		</dependency>
 	</dependencies>
 </project>

@@ -19,12 +19,12 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.pig4cloud</groupId>
-		<artifactId>pig</artifactId>
+		<groupId>com.hanko</groupId>
+		<artifactId>hanko</artifactId>
 		<version>3.0.3</version>
 	</parent>
 
-	<artifactId>pig-auth</artifactId>
+	<artifactId>auth</artifactId>
 	<packaging>jar</packaging>
 
 	<description>pig 认证授权中心，基于 spring security oAuth2</description>
@@ -42,20 +42,20 @@
 		</dependency>
 		<!--断路器依赖-->
 		<dependency>
-			<groupId>com.pig4cloud</groupId>
-			<artifactId>pig-common-feign</artifactId>
+			<groupId>com.hanko</groupId>
+			<artifactId>common-feign</artifactId>
 			<version>3.0.3</version>
 		</dependency>
 		<!--upms api、model 模块-->
 		<dependency>
-			<groupId>com.pig4cloud</groupId>
-			<artifactId>pig-upms-api</artifactId>
+			<groupId>com.hanko</groupId>
+			<artifactId>upms-api</artifactId>
 			<version>3.0.3</version>
 		</dependency>
 		<!--security-->
 		<dependency>
-			<groupId>com.pig4cloud</groupId>
-			<artifactId>pig-common-security</artifactId>
+			<groupId>com.hanko</groupId>
+			<artifactId>common-security</artifactId>
 			<version>3.0.3</version>
 		</dependency>
 		<!--JDBC相关-->

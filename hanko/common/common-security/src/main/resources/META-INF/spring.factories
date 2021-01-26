@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.hanko.common.security.service.PigUserDetailsServiceImpl,\
+  com.hanko.common.security.component.PigSecurityInnerAspect
+

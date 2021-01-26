@@ -26,8 +26,8 @@
 		<version>3.0.3</version>
 	</parent>
 
-	<groupId>com.pig4cloud</groupId>
-	<artifactId>pig</artifactId>
+	<groupId>com.hanko</groupId>
+	<artifactId>hanko</artifactId>
 	<version>3.0.3</version>
 	<name>${project.artifactId}</name>
 	<packaging>pom</packaging>
@@ -49,6 +49,7 @@
 		<jasypt.version>2.1.0</jasypt.version>
 		<swagger.fox.version>3.0.0</swagger.fox.version>
 		<xxl-job.version>2.2.0</xxl-job.version>
+		<common.version>3.0.3</common.version>
 		<docker.plugin.version>0.32.0</docker.plugin.version>
 		<docker.host>http://192.168.0.100:2375</docker.host>
 		<docker.registry>192.168.0.100</docker.registry>
@@ -101,12 +102,12 @@
 	</dependencies>
 
 	<modules>
-		<module>pig-register</module>
-		<module>pig-gateway</module>
-		<module>pig-auth</module>
-		<module>pig-upms</module>
-		<module>pig-common</module>
-		<module>pig-visual</module>
+		<module>register</module>
+		<module>gateway</module>
+		<module>auth</module>
+		<module>upms</module>
+		<module>common</module>
+		<module>visual</module>
 	</modules>
 
 	<dependencyManagement>
@@ -184,7 +185,7 @@
 						</authConfig>
 						<images>
 							<image>
-								<!-- 镜像名称： 172.17.0.111/library/pig-gateway:2.6.3-->
+								<!-- 镜像名称： 172.17.0.111/library/gateway:2.6.3-->
 								<name>${docker.registry}/${docker.namespace}/${project.name}:${project.version}</name>
 								<build>
 									<dockerFile>${project.basedir}/Dockerfile</dockerFile>

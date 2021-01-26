@@ -19,20 +19,20 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.pig4cloud</groupId>
-		<artifactId>pig</artifactId>
+		<groupId>com.hanko</groupId>
+		<artifactId>hanko</artifactId>
 		<version>3.0.3</version>
 	</parent>
 
-	<artifactId>pig-visual</artifactId>
+	<artifactId>visual</artifactId>
 
 	<description>pig 图形化相关功能</description>
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>pig-codegen</module>
-		<module>pig-monitor</module>
-		<module>pig-sentinel-dashboard</module>
-		<module>pig-xxl-job-admin</module>
+		<module>codegen</module>
+		<module>monitor</module>
+		<module>sentinel-dashboard</module>
+		<module>xxl-job-admin</module>
 	</modules>
 </project>

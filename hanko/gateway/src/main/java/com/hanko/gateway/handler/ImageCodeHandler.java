@@ -17,8 +17,8 @@
 package com.hanko.gateway.handler;
 
 import com.pig4cloud.captcha.ArithmeticCaptcha;
-import com.pig4cloud.pig.common.core.constant.CacheConstants;
-import com.pig4cloud.pig.common.core.constant.SecurityConstants;
+import com.hanko.common.core.constant.CacheConstants;
+import com.hanko.common.core.constant.SecurityConstants;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ByteArrayResource;

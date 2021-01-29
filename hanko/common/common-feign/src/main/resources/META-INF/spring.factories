@@ -1,3 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-    com.hanko.common.feign.PigFeignAutoConfiguration,\
-    com.hanko.common.feign.handle.GlobalBizExceptionHandler

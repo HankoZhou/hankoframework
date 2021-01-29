@@ -1,6 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.hanko.common.core.config.JacksonConfiguration,\
-  com.hanko.common.core.config.RedisTemplateConfiguration,\
-  com.hanko.common.core.config.RestTemplateConfiguration,\
-  com.hanko.common.core.util.SpringContextHolder,\
-  com.hanko.common.core.config.WebMvcConfiguration

@@ -1,3 +1,5 @@
+server:
+  port: 8000
 spring:
   application:
     name: gateway
@@ -8,3 +10,4 @@ spring:
       config:
         server-addr: http://localhost:8848
         file-extension: yaml
+

@@ -148,6 +148,8 @@ public interface AuthConstants {
 	 */
 	String TOKEN_PREFIX = "Bearer ";
 
+
+
 	/**
 	 * 用户信息Http请求头
 	 */

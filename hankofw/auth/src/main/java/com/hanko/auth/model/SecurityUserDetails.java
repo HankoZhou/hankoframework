@@ -16,7 +16,7 @@ import java.util.Collection;
 
 public class SecurityUserDetails extends User {
 
-    //增加自定义的用户属性
+    //Todo 增加自定义的用户属性
 
     /**
      *

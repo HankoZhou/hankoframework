@@ -1,6 +1,7 @@
 package com.hanko.auth.config;
 
 import com.hanko.auth.model.SecurityUserDetails;
+import com.hanko.auth.services.impl.UserDetailsServiceImpl;
 import com.hanko.cmn.constant.CacheConstants;
 import com.hanko.cmn.constant.AuthConstants;
 import com.hanko.cmn.model.SysUserDetails;
@@ -40,7 +41,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
 	private final DataSource dataSource;
 
-	private final UserDetailsService userDetailsService;
+	private final UserDetailsServiceImpl userDetailsService;
 
 	private final AuthenticationManager authenticationManager;
 
@@ -55,21 +56,24 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	}
 
 	@Override
-	public void configure(AuthorizationServerSecurityConfigurer oauthServer) {
-		oauthServer
-				.allowFormAuthenticationForClients()
-				.checkTokenAccess("permitAll()");
-	}
-
-	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
 		endpoints.allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST)
+				//用于存储token 可以是jdbc/redis
 				.tokenStore(redisTokenStore())
 				.tokenEnhancer(tokenEnhancer())
 				.userDetailsService(userDetailsService)
 				.authenticationManager(authenticationManager)
 				.reuseRefreshTokens(false);
 	}
+
+	@Override
+	public void configure(AuthorizationServerSecurityConfigurer oauthServer) {
+		oauthServer
+				.allowFormAuthenticationForClients()
+				.checkTokenAccess("permitAll()");
+	}
+
+
 
 	@Bean
 	public TokenStore redisTokenStore() {

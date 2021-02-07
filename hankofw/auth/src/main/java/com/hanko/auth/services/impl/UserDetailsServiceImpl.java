@@ -43,6 +43,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Override
 	@SneakyThrows
 	public UserDetails loadUserByUsername(String username) {
+		log.info("================loadUserByUsername======================");
 		Result<SysUserDetails> result = remoteUserService.getUserDetailsByUsername(username);
 		UserDetails userDetails = getUserDetails(result);
 		return userDetails;

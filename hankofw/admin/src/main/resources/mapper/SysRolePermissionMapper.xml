@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hanko.admin.mapper.SysRolePermissionMapper">
 
-    <select id="getPermissionByRole" resultType="com.hanko.admin.entity.SysRolePermission">
+    <select id="getPermissionByRole" resultType="com.hanko.cmn.entity.SysRolePermission">
         SELECT
             p.resource_id,
             p.name,
@@ -14,7 +14,9 @@
             sys_menu m
         WHERE
             p.resource_id = m.id
-          AND p.role_id IN (#{roles})
+        <if test="roles!=null">
+            AND p.role_id IN (#{roles})
+        </if>
 
         UNION
 
@@ -29,6 +31,8 @@
             sys_other_resource o
         WHERE
             p.resource_id = o.id
-          AND p.role_id IN (#{roles})
+        <if test="roles!=null">
+            AND p.role_id IN (#{roles})
+        </if>
     </select>
 </mapper>

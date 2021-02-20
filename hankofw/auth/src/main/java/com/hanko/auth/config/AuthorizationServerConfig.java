@@ -1,6 +1,8 @@
 package com.hanko.auth.config;
 
+import com.hanko.auth.component.JwtTokenEnhancer;
 import com.hanko.auth.model.SecurityUserDetails;
+import com.hanko.auth.services.impl.ClientDetailsServiceImpl;
 import com.hanko.auth.services.impl.UserDetailsServiceImpl;
 import com.hanko.cmn.constant.CacheConstants;
 import com.hanko.cmn.constant.AuthConstants;
@@ -10,10 +12,10 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -22,11 +24,17 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
+import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
+import org.springframework.security.rsa.crypto.KeyStoreKeyFactory;
 
 import javax.sql.DataSource;
+import java.security.KeyPair;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -47,22 +55,34 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
 	private final RedisConnectionFactory redisConnectionFactory;
 
+	private final JwtTokenEnhancer jwtTokenEnhancer;
+
+
 	@Override
 	@SneakyThrows
 	public void configure(ClientDetailsServiceConfigurer clients) {
 		log.info("================clients=========================");
-		JdbcClientDetailsService jdbcClientDetailsService = new JdbcClientDetailsService(dataSource);
+		JdbcClientDetailsService jdbcClientDetailsService = new ClientDetailsServiceImpl(dataSource);
 		clients.withClientDetails(jdbcClientDetailsService);
 	}
 
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
+		List<TokenEnhancer> delegates = new ArrayList<>();
+		delegates.add(jwtTokenEnhancer);
+		delegates.add(accessTokenConverter());
+		//配置JWT的内容增强器
+		TokenEnhancerChain enhancerChain = new TokenEnhancerChain();
+		enhancerChain.setTokenEnhancers(delegates);
+
 		endpoints.allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST)
 				//用于存储token 可以是jdbc/redis
 				.tokenStore(redisTokenStore())
-				.tokenEnhancer(tokenEnhancer())
+				.tokenEnhancer(jwtTokenEnhancer)
 				.userDetailsService(userDetailsService)
 				.authenticationManager(authenticationManager)
+				.accessTokenConverter(accessTokenConverter())
+				.tokenEnhancer(enhancerChain)
 				.reuseRefreshTokens(false);
 	}
 
@@ -82,15 +102,18 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 		return tokenStore;
 	}
 
+
 	@Bean
-	public TokenEnhancer tokenEnhancer() {
-		return (accessToken, authentication) -> {
-			final Map<String, Object> additionalInfo = new HashMap<>(3);
-			SecurityUserDetails userInfo = (SecurityUserDetails) authentication.getUserAuthentication().getPrincipal();
-			additionalInfo.put(AuthConstants.DETAILS_USERNAME, userInfo.getUsername());
-			((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);
-			return accessToken;
-		};
+	public JwtAccessTokenConverter accessTokenConverter() {
+		JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
+		jwtAccessTokenConverter.setKeyPair(keyPair());
+		return jwtAccessTokenConverter;
 	}
 
+	@Bean
+	public KeyPair keyPair() {
+		//从classpath下的证书中获取秘钥对
+		KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(new ClassPathResource("jwt.jks"), "123456".toCharArray());
+		return keyStoreKeyFactory.getKeyPair("jwt", "123456".toCharArray());
+	}
 }

@@ -1,9 +1,9 @@
-/*
 package com.hanko.gateway.filter;
 
 import cn.hutool.core.util.StrUtil;
 import com.hanko.cmn.constant.AuthConstants;
 import com.nimbusds.jose.JWSObject;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
@@ -16,18 +16,16 @@ import reactor.core.publisher.Mono;
 
 import java.text.ParseException;
 
-*/
 /**
  * 将登录用户的JWT转化成用户信息的全局过滤器
  *
  * @author macro
  * @date 2020/6/17
- *//*
+ */
 
+@Slf4j
 @Component
 public class AuthGlobalFilter implements GlobalFilter, Ordered {
-
-    private static Logger LOGGER = LoggerFactory.getLogger(AuthGlobalFilter.class);
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
@@ -40,7 +38,7 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
             String realToken = token.replace(AuthConstants.TOKEN_PREFIX, "");
             JWSObject jwsObject = JWSObject.parse(realToken);
             String userStr = jwsObject.getPayload().toString();
-            LOGGER.info("AuthGlobalFilter.filter() user:{}",userStr);
+            log.info("AuthGlobalFilter.filter() user:{}",userStr);
             ServerHttpRequest request = exchange.getRequest().mutate().header(AuthConstants.USER_TOKEN_HEADER, userStr).build();
             exchange = exchange.mutate().request(request).build();
         } catch (ParseException e) {
@@ -54,4 +52,3 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
         return 0;
     }
 }
-*/

@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.hanko.admin.entity.SysRolePermission;
+import com.hanko.cmn.entity.SysRolePermission;
 import com.hanko.admin.entity.SysUser;
 import com.hanko.admin.entity.SysUserRole;
 import com.hanko.admin.mapper.SysRoleMapper;
@@ -15,6 +15,7 @@ import com.hanko.admin.mapper.SysUserRoleMapper;
 import com.hanko.cmn.model.SysUserDetails;
 import com.hanko.admin.service.SysUserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -56,7 +57,6 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         List<String> permissions = sysRolePermissionMapper
                 .getPermissionByRole(String.join(",", roles))
                 .stream().map(SysRolePermission::getUrl)
-
                 .collect(Collectors.toList());
 
         sysUserDetails.setUsername(sysUser.getUsername());

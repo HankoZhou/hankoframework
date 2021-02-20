@@ -1,7 +1,7 @@
 package com.hanko.admin.mapper;
 
 import com.hanko.admin.BaseTest;
-import com.hanko.admin.entity.SysRolePermission;
+import com.hanko.cmn.entity.SysRolePermission;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

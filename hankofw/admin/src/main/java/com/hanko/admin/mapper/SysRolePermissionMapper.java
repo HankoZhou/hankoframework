@@ -1,7 +1,7 @@
 package com.hanko.admin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.hanko.admin.entity.SysRolePermission;
+import com.hanko.cmn.entity.SysRolePermission;
 
 import java.util.List;
 

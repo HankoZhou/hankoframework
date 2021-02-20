@@ -4,6 +4,7 @@ import com.hanko.cmn.services.RedisService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -16,9 +17,11 @@ import java.util.concurrent.TimeUnit;
  * @author macro
  * @date 2020/3/3
  */
-@RequiredArgsConstructor
+
+
 public class RedisServiceImpl implements RedisService {
-    private final RedisTemplate<String, Object> redisTemplate;
+    @Autowired
+    RedisTemplate<String, Object> redisTemplate;
 
     @Override
     public void set(String key, Object value, long time) {

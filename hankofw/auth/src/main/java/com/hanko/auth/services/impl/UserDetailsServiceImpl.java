@@ -64,9 +64,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		Set<String> authsSet = new HashSet<>();
 		if (ArrayUtil.isNotEmpty(sysUserDetails.getRoles())) {
 			// 获取角色
-			sysUserDetails.getRoles().stream().forEach(role -> authsSet.add(AuthConstants.ROLE_PREFIX + role));
+//			sysUserDetails.getRoles().stream().forEach(role -> authsSet.add(AuthConstants.ROLE_PREFIX + role));
+			sysUserDetails.getRoles().stream().forEach(role -> authsSet.add(role));
+
 			// 获取资源
-			authsSet.addAll(sysUserDetails.getPermissions());
+//			authsSet.addAll(sysUserDetails.getPermissions());
 		}
 		Collection<? extends GrantedAuthority> authorities = AuthorityUtils
 				.createAuthorityList(authsSet.toArray(new String[0]));

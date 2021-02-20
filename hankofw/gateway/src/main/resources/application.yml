@@ -18,6 +18,11 @@ spring:
             - Path=/admin/**
           filters:
             - StripPrefix=1
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: 'http://localhost:8002/rsa/publicKey'
   redis:
     database: 0
     port: 16379

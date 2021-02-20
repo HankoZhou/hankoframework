@@ -1,4 +1,4 @@
-package com.hanko.admin.entity;
+package com.hanko.cmn.entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -17,6 +17,7 @@ import java.io.Serializable;
 @EqualsAndHashCode(callSuper = false)
 public class SysRolePermission implements Serializable {
 
+    private  int id;
     /**权限名称**/
     private String name;
 

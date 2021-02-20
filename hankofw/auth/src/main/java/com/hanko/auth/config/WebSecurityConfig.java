@@ -1,7 +1,6 @@
 
 package com.hanko.auth.config;
 
-import com.hanko.auth.services.impl.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.context.annotation.Bean;
@@ -25,8 +24,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	private final UserDetailsService userDetailsService;
-
-
 
 
 	@Override
@@ -57,7 +54,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(WebSecurity web) {
-		web.ignoring().antMatchers("/css/**", "/js/**","/favicon.ico");
+		web.ignoring()
+				.antMatchers(
+						"/css/**",
+						"/js/**",
+						"/favicon.ico");
 	}
 
 	@Bean

@@ -2,6 +2,7 @@ package com.hanko.auth.controller;
 
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,10 +18,10 @@ import java.util.Map;
  * @date 2020/6/19
  */
 @RestController
+@RequiredArgsConstructor
 public class KeyPairController {
 
-    @Autowired
-    private KeyPair keyPair;
+    private final KeyPair keyPair;
 
     @GetMapping("/rsa/publicKey")
     public Map<String, Object> getKey() {

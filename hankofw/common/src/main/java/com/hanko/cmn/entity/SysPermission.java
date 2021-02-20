@@ -15,7 +15,7 @@ import java.io.Serializable;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class SysRolePermission implements Serializable {
+public class SysPermission implements Serializable {
 
     private  int id;
     /**权限名称**/

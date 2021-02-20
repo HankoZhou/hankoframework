@@ -22,4 +22,7 @@ class RemoteUserServiceTest extends BaseTest {
         Result<SysUserDetails>  user = remoteUserService.getUserDetailsByUsername("hanko");
         log.info(user.getData().toString());
     }
+
+
+
 }

@@ -1,21 +1,16 @@
 package com.hanko.admin.service.impl;
 
-import cn.hutool.core.bean.BeanUtil;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.hanko.cmn.entity.SysRolePermission;
+import com.hanko.admin.mapper.SysPermissionMapper;
+import com.hanko.cmn.entity.SysPermission;
 import com.hanko.admin.entity.SysUser;
 import com.hanko.admin.entity.SysUserRole;
-import com.hanko.admin.mapper.SysRoleMapper;
-import com.hanko.admin.mapper.SysRolePermissionMapper;
 import com.hanko.admin.mapper.SysUserMapper;
 import com.hanko.admin.mapper.SysUserRoleMapper;
 import com.hanko.cmn.model.SysUserDetails;
 import com.hanko.admin.service.SysUserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,7 +30,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
     private final SysUserMapper sysUserMapper;
     private final SysUserRoleMapper sysUserRoleMapper;
-    private final SysRolePermissionMapper sysRolePermissionMapper;
+    private final SysPermissionMapper sysPermissionMapper;
 
     @Override
     public SysUser getUserByUsername(String username) {
@@ -54,9 +49,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
                 .stream().map(userRole -> String.valueOf(userRole.getRoleId()))
                 .collect(Collectors.toList());
 
-        List<String> permissions = sysRolePermissionMapper
-                .getPermissionByRole(String.join(",", roles))
-                .stream().map(SysRolePermission::getUrl)
+        List<String> permissions = sysPermissionMapper
+                .getPermissionListByRoles(String.join(",", roles))
+                .stream().map(SysPermission::getUrl)
                 .collect(Collectors.toList());
 
         sysUserDetails.setUsername(sysUser.getUsername());

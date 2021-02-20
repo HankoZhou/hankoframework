@@ -22,6 +22,7 @@ public class SysUserDetails implements Serializable {
 	 */
 	private String password;
 
+
 	private int status;
 
 	/**
@@ -33,5 +34,7 @@ public class SysUserDetails implements Serializable {
 	 * 角色集合
 	 */
 	private List<String> roles;
+
+	private int orgnazitionId;
 
 }

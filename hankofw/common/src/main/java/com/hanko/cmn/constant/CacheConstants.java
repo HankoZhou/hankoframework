@@ -9,7 +9,14 @@ public interface CacheConstants {
 	/**
 	 * oauth 缓存令牌前缀
 	 */
-	String OAUTH_TOKEN_PREFIX = "oauth:";
+	String  ACCESS_TOKEN = "auth:token:";
+
+	/**
+	 * Redis缓存权限规则key
+	 */
+	String SYS_PERMISSION = "auth:permission";
+
+	String CLIENT_DETAILS = "auth:client_details";
 
 
 }

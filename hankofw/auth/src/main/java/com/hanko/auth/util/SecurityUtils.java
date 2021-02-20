@@ -29,7 +29,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * 安全工具类
+ * 安全用户工具类
  *
  * @author L.cm
  */

@@ -1,16 +1,16 @@
 package com.hanko.gateway.component;
 
-import cn.hutool.core.convert.Convert;
 import com.hanko.cmn.constant.AuthConstants;
-import com.hanko.cmn.entity.SysRolePermission;
+import com.hanko.cmn.constant.CacheConstants;
+import com.hanko.cmn.entity.SysPermission;
 import com.hanko.cmn.services.RedisService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.security.authorization.AuthorizationDecision;
 import org.springframework.security.authorization.ReactiveAuthorizationManager;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.server.authorization.AuthorizationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
@@ -19,7 +19,6 @@ import reactor.core.publisher.Mono;
 
 import java.net.URI;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * 鉴权管理器，用于判断是否有资源的访问权限
@@ -51,18 +50,26 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
 
         //管理端路径需校验权限
         authorities = new ArrayList<>();
-        List<SysRolePermission> resourceRolesMap = (List<SysRolePermission>) redisService
-                                                .get(AuthConstants.RESOURCE_ROLES_MAP_KEY);
+        List<SysPermission> resourceRolesMap = (List<SysPermission>) redisService
+                                                .get(CacheConstants.SYS_PERMISSION);
         resourceRolesMap.stream().forEach(r->{
             if (pathMatcher.match(r.getUrl(), uri.getPath())) {
                 authorities.add(AuthConstants.ROLE_PREFIX + r.getRoleId());
             }});
 
         //认证通过且角色匹配的用户可访问当前路径
+        //代码一，简捷方式
         return mono
-                .filter(a -> {
-                    return a.isAuthenticated();
-                })
+                .filter(Authentication::isAuthenticated)
+                .flatMapIterable(Authentication::getAuthorities)
+                .map(GrantedAuthority::getAuthority)
+                .any(authorities::contains)
+                .map(AuthorizationDecision::new)
+                .defaultIfEmpty(new AuthorizationDecision(false));
+
+        //代码二，详细方式
+        /*return mono
+                .filter(Authentication::isAuthenticated)
                 .flatMapIterable(a -> {
                     return a.getAuthorities();
                 })
@@ -84,15 +91,8 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
                 .map(hasAuthority -> new AuthorizationDecision(hasAuthority))
                 .defaultIfEmpty(new AuthorizationDecision(false));
 
+*/
 
-        //lambda表达式方式
-        /*return mono
-                .filter(Authentication::isAuthenticated)
-                .flatMapIterable(Authentication::getAuthorities)
-                .map(GrantedAuthority::getAuthority)
-                .any(authorities::contains)
-                .map(AuthorizationDecision::new)
-                .defaultIfEmpty(new AuthorizationDecision(false));*/
     }
 
 }

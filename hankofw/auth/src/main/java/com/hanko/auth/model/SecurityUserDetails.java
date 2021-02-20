@@ -1,6 +1,8 @@
 package com.hanko.auth.model;
 
-import lombok.Data;
+import com.hanko.cmn.constant.AuthConstants;
+import com.hanko.cmn.model.SysUserDetails;
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
@@ -16,18 +18,22 @@ import java.util.Collection;
 
 public class SecurityUserDetails extends User {
 
-    //Todo 增加自定义的用户属性
+    /**
+     * Todo 增加自定义的用户属性
+     */
+    @Getter
+    private int organizationId;
 
     /**
      *
-     * @param username
-     * @param password
-     * @param enabled
+     * @param sysUserDetails
      * @param authorities
      */
-
-    public SecurityUserDetails(String username, String password, boolean enabled,Collection<? extends GrantedAuthority> authorities) {
-        super(username, password, enabled, true, true, true, authorities);
+    public SecurityUserDetails(SysUserDetails sysUserDetails,Collection<? extends GrantedAuthority> authorities) {
+        super(sysUserDetails.getUsername(), sysUserDetails.getPassword(),
+                AuthConstants.USER_NORMAL_STATUS == sysUserDetails.getStatus(),
+                true, true, true, authorities);
+        this.organizationId = sysUserDetails.getOrgnazitionId();
     }
 
 

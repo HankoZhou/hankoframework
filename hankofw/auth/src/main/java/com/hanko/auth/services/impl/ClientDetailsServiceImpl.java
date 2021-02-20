@@ -1,5 +1,6 @@
 package com.hanko.auth.services.impl;
 
+import com.hanko.cmn.constant.CacheConstants;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
@@ -20,7 +21,7 @@ public class ClientDetailsServiceImpl extends JdbcClientDetailsService {
 
     @Override
     @SneakyThrows
-    @Cacheable("client_id")
+    @Cacheable(cacheNames = CacheConstants.CLIENT_DETAILS, key = "#clientId")
     public ClientDetails loadClientByClientId(String clientId) {
         log.info("==============loadClientByClientId=====================");
         return super.loadClientByClientId(clientId);

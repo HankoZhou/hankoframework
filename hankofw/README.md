@@ -51,6 +51,6 @@ com.hankofw
 
 
 ## 计划
-- oauth
-- token jwt  存储情况
+- auth/缓存
+- 统一异常处理
 - 用户中心功能实现

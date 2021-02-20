@@ -35,6 +35,6 @@ public class SysUserDetails implements Serializable {
 	 */
 	private List<String> roles;
 
-	private int orgnazitionId;
+	private int organizationId;
 
 }

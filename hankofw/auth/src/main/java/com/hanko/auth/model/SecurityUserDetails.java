@@ -33,7 +33,7 @@ public class SecurityUserDetails extends User {
         super(sysUserDetails.getUsername(), sysUserDetails.getPassword(),
                 AuthConstants.USER_NORMAL_STATUS == sysUserDetails.getStatus(),
                 true, true, true, authorities);
-        this.organizationId = sysUserDetails.getOrgnazitionId();
+        this.organizationId = sysUserDetails.getOrganizationId();
     }
 
 

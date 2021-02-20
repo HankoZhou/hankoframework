@@ -1,0 +1,98 @@
+{
+	"info": {
+		"_postman_id": "abde023a-9c44-4e93-8141-0712c6de8059",
+		"name": "hankofw",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "获取token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "app",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/auth/oauth/token?username=hanko&password=123456&grant_type=password",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"oauth",
+						"token"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "hanko"
+						},
+						{
+							"key": "password",
+							"value": "123456"
+						},
+						{
+							"key": "grant_type",
+							"value": "password"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "获取用户详细",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "99213aaf-0b05-4015-9297-995db44073f5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/admin/user/details/hanko",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"admin",
+						"user",
+						"details",
+						"hanko"
+					],
+					"query": [
+						{
+							"key": "access_token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZXhwIjoxNjExMzQyNjE3LCJ1c2VyX25hbWUiOiJhZG1pbiIsImp0aSI6IjI4MTFjNGEwLWI0OWUtNGY0Yy04Y2NmLTk3OTFhY2IwZjhmNSIsImNsaWVudF9pZCI6ImFkbWluLWFwcCIsInNjb3BlIjpbImFsbCJdfQ.lLrlDuyMp7vnnciCoJbmg1n7JdCbusB25uk7p1sq5XYHEcfScSgcaJGaC8ZgRqg_tFPM_Kd4ICf9GXMJFRl_kM-KdU9kMfcycOCND9jAMkgr2lVLOTeL0oOS5K8ae-zg2XpjKyBIcQLNY_yFkMMMXcUkmDS8x4fMo76CzEcA_Zs",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

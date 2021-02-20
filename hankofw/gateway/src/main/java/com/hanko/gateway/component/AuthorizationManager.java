@@ -50,9 +50,9 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
 
         //管理端路径需校验权限
         authorities = new ArrayList<>();
-        List<SysPermission> resourceRolesMap = (List<SysPermission>) redisService
+        List<SysPermission> sysPermissions = (List<SysPermission>) redisService
                                                 .get(CacheConstants.SYS_PERMISSION);
-        resourceRolesMap.stream().forEach(r->{
+        sysPermissions.stream().forEach(r->{
             if (pathMatcher.match(r.getUrl(), uri.getPath())) {
                 authorities.add(AuthConstants.ROLE_PREFIX + r.getRoleId());
             }});

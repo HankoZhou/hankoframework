@@ -18,7 +18,7 @@ public interface SysPermissionMapper extends BaseMapper<SysPermission> {
      * @param roles
      * @return
      */
-    List<SysPermission> getPermissionListByRoles(String roles);
+    List<SysPermission> selectPermissionListByRoles(String roles);
 
 
 }

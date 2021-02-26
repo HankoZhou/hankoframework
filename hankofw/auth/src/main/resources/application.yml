@@ -27,6 +27,20 @@ jwt:
   keystore: jwt.jks
   password: 123456
   alias: jwt
+
+security:
+  ignore:
+    urls: #配置白名单路径
+      - "/doc.html"
+      - "/swagger-resources/**"
+      - "/swagger-ui/**"
+      - "/swagger/**"
+      - "/**/v2/api-docs"
+      - "/webjars/springfox-swagger-ui/**"
+      - "/**/*.js"
+      - "/**/*.css"
+      - "/**/*.png"
+      - "/**/*.ico"
 #  rabbitmq: #rabbitmq相关配置
 #    host: localhost
 #    port: 5672

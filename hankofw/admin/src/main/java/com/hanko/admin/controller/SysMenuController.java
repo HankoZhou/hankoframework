@@ -1,8 +1,11 @@
 package com.hanko.admin.controller;
 
-
-import org.springframework.stereotype.Controller;
+import cn.hutool.json.JSONUtil;
+import com.hanko.admin.service.SysMenuService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
@@ -12,8 +15,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author com.hanko.demo
  * @since 2021-02-02
  */
-@Controller
-@RequestMapping("/mapper/sys-menu")
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/menu")
 public class SysMenuController {
 
+private final SysMenuService sysMenuService;
+
+    @GetMapping("/list")
+    public String menuList() {
+        return JSONUtil.toJsonStr(sysMenuService.getMenuTree());
+    }
 }

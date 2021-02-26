@@ -14,9 +14,9 @@ public interface CacheConstants {
 	/**
 	 * Redis缓存权限规则key
 	 */
-	String SYS_PERMISSION = "auth:permission";
+	String SYS_PERMISSION = "auth:permission:";
 
-	String CLIENT_DETAILS = "auth:client_details";
+	String CLIENT_DETAILS = "auth:client_details:";
 
 
 }

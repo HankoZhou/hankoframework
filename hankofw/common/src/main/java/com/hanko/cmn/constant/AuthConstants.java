@@ -19,7 +19,7 @@ public interface AuthConstants {
 	/**
 	 * 认证信息Http请求头
 	 */
-	String TOKEN_HEADER = "Authorization";
+	String AUTH_HEADER = "Authorization";
 
 	/**
 	 * JWT令牌前缀
@@ -27,6 +27,8 @@ public interface AuthConstants {
 	String TOKEN_PREFIX = "Bearer ";
 
 	String ORGANIZATION_ID = "organization_id";
+
+	String AUTH_GET_TOKEN = "/**/oauth/token";
 
 
 

@@ -28,11 +28,12 @@ spring:
     port: 16379
     host: hankoserver
     password: hanko
-secure:
+security:
   ignore:
     urls: #配置白名单路径
       - "/doc.html"
       - "/swagger-resources/**"
+      - "/swagger-ui/**"
       - "/swagger/**"
       - "/**/v2/api-docs"
       - "/webjars/springfox-swagger-ui/**"
@@ -40,6 +41,6 @@ secure:
       - "/**/*.css"
       - "/**/*.png"
       - "/**/*.ico"
-      - "/actuator/**"
+      # 放开获取token url
       - "/auth/oauth/token"
-      - "/admin/login"
+

@@ -1,10 +1,12 @@
 
 package com.hanko.auth.config;
 
+import cn.hutool.core.convert.Convert;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -24,7 +26,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	private final UserDetailsService userDetailsService;
-
+	private final IgnoreUrlsProperties ignoreUrlsProperties;
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -35,30 +37,32 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@SneakyThrows
 	protected void configure(HttpSecurity http) {
 		http.formLogin()
-				.loginPage("/token/login")
-				.loginProcessingUrl("/token/form")
-				.successForwardUrl("/token/success")
-				.and()
-				.logout()
-				.deleteCookies("JSESSIONID")
-				.invalidateHttpSession(true)
-				.and()
-				.authorizeRequests()
-				.antMatchers("/token/**").permitAll()
-				.antMatchers("/oauth/**").permitAll()
-				.antMatchers("/rsa/publicKey").permitAll()
-				.anyRequest().authenticated()
-				.and()
-				.csrf().disable();
+			.loginPage("/token/login")
+			.loginProcessingUrl("/token/form")
+			.successForwardUrl("/token/success")
+			.and()
+			.logout()
+			.deleteCookies("JSESSIONID")
+			.invalidateHttpSession(true)
+			.and()
+			.authorizeRequests()
+			//token**自定义登录地址
+			.antMatchers("/token/**").permitAll()
+			// oauth oauth2默认地址
+			.antMatchers("/oauth/**").permitAll()
+			.antMatchers("/rsa/publicKey").permitAll()
+			.anyRequest().authenticated()
+			.and().csrf().disable();
 	}
 
+	/**
+	 * 增加白名单，如 css js swagger等
+	 * @param web
+	 */
 	@Override
 	public void configure(WebSecurity web) {
-		web.ignoring()
-				.antMatchers(
-						"/css/**",
-						"/js/**",
-						"/favicon.ico");
+		web.ignoring().antMatchers(
+				Convert.toStrArray(ignoreUrlsProperties.getUrls()));
 	}
 
 	@Bean

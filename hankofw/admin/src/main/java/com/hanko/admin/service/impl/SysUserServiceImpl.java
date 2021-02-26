@@ -11,6 +11,7 @@ import com.hanko.admin.mapper.SysUserRoleMapper;
 import com.hanko.cmn.model.SysUserDetails;
 import com.hanko.admin.service.SysUserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,8 +51,8 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
                 .collect(Collectors.toList());
 
         List<String> permissions = sysPermissionMapper
-                .getPermissionListByRoles(String.join(",", roles))
-                .stream().map(SysPermission::getUrl)
+                .selectPermissionListByRoles(String.join(",", roles))
+                .stream().map(SysPermission::getUri)
                 .collect(Collectors.toList());
 
         sysUserDetails.setUsername(sysUser.getUsername());
@@ -60,5 +61,12 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         sysUserDetails.setRoles(roles);
         sysUserDetails.setPermissions(permissions);
         return sysUserDetails;
+    }
+
+    @Override
+    public int saveUser(SysUser sysUser){
+        sysUser.setPassword(new BCryptPasswordEncoder()
+                .encode(sysUser.getPassword()));
+        return sysUserMapper.insert(sysUser);
     }
 }

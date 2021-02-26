@@ -2,37 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hanko.admin.mapper.SysPermissionMapper">
 
-    <select id="getPermissionListByRoles" resultType="com.hanko.cmn.entity.SysPermission">
+    <select id="selectPermissionListByRoles" resultType="com.hanko.cmn.entity.SysPermission">
         SELECT
-            p.resource_id,
-            p.name,
+            p.NAME,
             p.operate,
-            p.role_id,
-            m.url url
-        FROM
+            p.uri,
+            rp.role_id
+            FROM
             sys_permission p,
-            sys_menu m
+            sys_role_permission rp
         WHERE
-            p.resource_id = m.id
-        <if test="roles!=null">
-            AND p.role_id IN (#{roles})
-        </if>
+            rp.permission_id = p.id
 
-        UNION
+            <if test="roles!=null">
+                AND rp.role_id IN (#{roles})
+            </if>
 
-        SELECT
-            p.resource_id,
-            p.name,
-            p.operate,
-            p.role_id,
-            o.url url
-        FROM
-            sys_permission p,
-            sys_other_resource o
-        WHERE
-            p.resource_id = o.id
-        <if test="roles!=null">
-            AND p.role_id IN (#{roles})
-        </if>
     </select>
 </mapper>

@@ -13,11 +13,10 @@ import java.time.LocalDateTime;
  * 菜单资源
  * </p>
  *
- * @author com.hanko.demo
+ * @author hanko
  * @since 2021-02-02
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
 public class SysMenu implements Serializable {
 
     @TableId(type = IdType.AUTO)
@@ -33,9 +32,9 @@ public class SysMenu implements Serializable {
     private Integer parentId;
 
     /**
-     * 菜单URL
+     * 菜单URI
      */
-    private String url;
+    private String uri;
 
     /**
      * 图标

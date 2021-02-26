@@ -23,6 +23,9 @@ public class SysUserDetails implements Serializable {
 	private String password;
 
 
+	private String icon;
+
+
 	private int status;
 
 	/**

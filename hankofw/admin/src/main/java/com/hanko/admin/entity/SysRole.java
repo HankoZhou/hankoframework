@@ -17,12 +17,10 @@ import java.time.LocalDateTime;
  * @since 2021-02-02
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
 public class SysRole implements Serializable {
     @TableId(type = IdType.AUTO)
     private Integer id;
 
-    private String Id;
     /**
      * 角色名
      */

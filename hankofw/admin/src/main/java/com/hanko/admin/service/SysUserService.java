@@ -13,6 +13,13 @@ import com.hanko.cmn.model.SysUserDetails;
  * @since 2021-02-02
  */
 public interface SysUserService extends IService<SysUser> {
+
+    /**
+     * @param sysUser
+     * @return
+     */
+    int saveUser(SysUser sysUser);
+
     /**
      * loadUserByUsername
      * @param username
@@ -21,10 +28,15 @@ public interface SysUserService extends IService<SysUser> {
     SysUser getUserByUsername(String username);
 
 
+
     /**
      * @param username
      * @return
      */
     SysUserDetails getUserDetailsByUsername(String username);
+
+
+
+
 
 }

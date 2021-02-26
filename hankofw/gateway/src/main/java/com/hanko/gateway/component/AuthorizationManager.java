@@ -4,6 +4,7 @@ import com.hanko.cmn.constant.AuthConstants;
 import com.hanko.cmn.constant.CacheConstants;
 import com.hanko.cmn.entity.SysPermission;
 import com.hanko.cmn.services.RedisService;
+import com.hanko.gateway.config.IgnoreUrlsProperties;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -52,8 +53,8 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
         authorities = new ArrayList<>();
         List<SysPermission> sysPermissions = (List<SysPermission>) redisService
                                                 .get(CacheConstants.SYS_PERMISSION);
-        sysPermissions.stream().forEach(r->{
-            if (pathMatcher.match(r.getUrl(), uri.getPath())) {
+        sysPermissions.forEach(r->{
+            if (pathMatcher.match(r.getUri(), uri.getPath())) {
                 authorities.add(AuthConstants.ROLE_PREFIX + r.getRoleId());
             }});
 

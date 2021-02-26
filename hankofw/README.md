@@ -51,6 +51,7 @@ com.hankofw
 
 
 ## 计划
-- auth/缓存
+~~- auth/缓存~~
 - 统一异常处理
-- 用户中心功能实现
+- SpringCloud相关组件
+- 用户中心业务实现

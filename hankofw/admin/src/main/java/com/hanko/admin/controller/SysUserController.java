@@ -1,13 +1,15 @@
 package com.hanko.admin.controller;
 
 
+import cn.hutool.json.JSONObject;
 import com.hanko.admin.service.SysUserService;
+import com.hanko.cmn.constant.AuthConstants;
 import com.hanko.cmn.model.Result;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import javax.servlet.http.HttpServletRequest;
+
 
 /**
  * <p>
@@ -29,13 +31,17 @@ public class SysUserController {
         return Result.success(sysUserService.getUserDetailsByUsername(username));
     }
 
-    @GetMapping("/info/{username}")
-    public Result info(@PathVariable("username") String username) {
-        return Result.success(sysUserService.getUserByUsername(username));
+    @ApiOperation(value = "获取当前登录用户信息")
+    @GetMapping(value = "/info")
+    public Result getCurrentUserInfo(HttpServletRequest request) {
+        String userStr = request.getHeader(AuthConstants.AUTH_HEADER);
+        String username = (String) new JSONObject(userStr).get("user_name");
+        return Result.success(sysUserService.getUserDetailsByUsername(username));
+
     }
 
     @GetMapping("/list")
-    public Result list() {
+    public Result listByPage() {
         return Result.success(sysUserService.list());
     }
 

@@ -25,7 +25,7 @@ public class SysPermissionServiceImpl implements SysPermissionService {
 
     @Override
     public void initPermission() {
-        List<SysPermission> permissionList = sysPermissionMapper.getPermissionListByRoles(null);
+        List<SysPermission> permissionList = sysPermissionMapper.selectPermissionListByRoles(null);
         redisService.set(CacheConstants.SYS_PERMISSION,permissionList);
     }
 }

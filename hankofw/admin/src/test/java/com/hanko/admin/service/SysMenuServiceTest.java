@@ -1,38 +1,39 @@
-package com.hanko.admin.service.impl;
+package com.hanko.admin.service;
 
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import cn.hutool.json.JSONUtil;
+import com.hanko.admin.BaseTest;
 import com.hanko.admin.entity.SysMenu;
-import com.hanko.admin.mapper.SysMenuMapper;
 import com.hanko.admin.model.MenuNode;
-import com.hanko.admin.service.SysMenuService;
-import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.BeanUtils;
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 /**
- * <p>
- * 菜单资源 服务实现类
- * </p>
- *
- * @author com.hanko.demo
- * @since 2021-02-02
+ * @Author: hanko
+ * @Date: 2021-2-24 16:10
  */
-@Service
-@RequiredArgsConstructor
-public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> implements SysMenuService {
+@Slf4j
+class SysMenuServiceTest extends BaseTest {
+    @Autowired
+    SysMenuService sysMenuService;
+    @Test
+    void test_menu_list(){
+        List<SysMenu>  menuList = sysMenuService.list();
 
-    private final SysMenuMapper sysMenuMapper;
-
-    @Override
-    public List<MenuNode> getMenuTree() {
-        List<SysMenu> menuList = sysMenuMapper.selectList(null);
         List<MenuNode> menuNodeList = menuList.stream()
                 .filter(menu -> menu.getParentId().equals(-1))
                 .map(menu -> covertMenuNode(menu, menuList)).collect(Collectors.toList());
-        return menuNodeList;
+
+        System.out.println("menuNodeList = " + JSONUtil.toJsonStr(menuNodeList));
+
+
+
     }
 
     private MenuNode covertMenuNode(SysMenu menu, List<SysMenu> menuList) {
@@ -44,4 +45,5 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
         node.setChildren(children);
         return node;
     }
+
 }

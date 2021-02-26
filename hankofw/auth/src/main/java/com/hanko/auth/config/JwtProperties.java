@@ -1,4 +1,4 @@
-package com.hanko.auth.component;
+package com.hanko.auth.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

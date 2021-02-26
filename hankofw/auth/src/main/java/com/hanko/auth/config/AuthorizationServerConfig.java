@@ -1,6 +1,5 @@
 package com.hanko.auth.config;
 
-import com.hanko.auth.component.JwtProperties;
 import com.hanko.auth.component.JwtTokenEnhancer;
 import com.hanko.auth.services.impl.ClientDetailsServiceImpl;
 import com.hanko.auth.services.impl.UserDetailsServiceImpl;

@@ -1,5 +1,6 @@
-package com.hanko.gateway.component;
+package com.hanko.gateway.config;
 
+import com.hanko.cmn.model.BaseIgnoreProperties;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
@@ -13,8 +14,8 @@ import java.util.List;
  */
 @Data
 @Component
-@ConfigurationProperties(prefix = "secure.ignore")
-public class IgnoreUrlsProperties {
+@ConfigurationProperties(prefix = "security.ignore")
+public class IgnoreUrlsProperties extends BaseIgnoreProperties {
     private List<String> urls;
 
 }

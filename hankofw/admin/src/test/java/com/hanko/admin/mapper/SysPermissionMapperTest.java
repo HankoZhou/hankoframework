@@ -19,7 +19,7 @@ class SysPermissionMapperTest extends BaseTest {
 
     @Test
     void getPermissionByRole() {
-       List<SysPermission> list =  sysRolePermissionMapper.getPermissionListByRoles("6,7");
+       List<SysPermission> list =  sysRolePermissionMapper.selectPermissionListByRoles("6,7");
         list.forEach(System.out::println);
 
     }

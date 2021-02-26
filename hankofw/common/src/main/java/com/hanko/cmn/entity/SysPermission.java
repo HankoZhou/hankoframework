@@ -14,19 +14,16 @@ import java.io.Serializable;
  * @since 2021-02-03
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
 public class SysPermission implements Serializable {
 
-    private  int id;
+    private  Integer id;
     /**权限名称**/
     private String name;
 
+    private String operate;
+    private String uri;
+
     private String roleId;
 
-    private String resourceId;
-
-    private String url;
-
-    private String operate;
 
 }

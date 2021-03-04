@@ -9,7 +9,7 @@ import com.hanko.cmn.model.SysUserDetails;
  * 用户表 Mapper 接口
  * </p>
  *
- * @author com.hanko.demo
+ * @author hanko
  * @since 2021-02-02
  */
 public interface SysUserMapper extends BaseMapper<SysUser> {

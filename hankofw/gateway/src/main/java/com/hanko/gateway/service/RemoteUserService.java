@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 /**
- * @author lengleng
+ * @author hanko
  * @date 2019/2/1
  */
 @FeignClient(contextId = "remoteUserService",

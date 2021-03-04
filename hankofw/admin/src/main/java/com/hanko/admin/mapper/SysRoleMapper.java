@@ -8,7 +8,7 @@ import com.hanko.admin.entity.SysRole;
  * 系统角色表 Mapper 接口
  * </p>
  *
- * @author com.hanko.demo
+ * @author hanko
  * @since 2021-02-02
  */
 public interface SysRoleMapper extends BaseMapper<SysRole> {

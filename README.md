@@ -6,7 +6,7 @@
 
 
 
-Springboot2.3
+Springboot2.3.8
 
 Redis 
 
@@ -48,3 +48,11 @@ hankofw-web
 
 com.hankofw
 
+
+
+## 计划
+~~- auth/缓存~~
+~~- 统一异常处理~~
+- rap协助前端重构  20210301
+- SpringCloud相关组件
+- 用户中心业务实现

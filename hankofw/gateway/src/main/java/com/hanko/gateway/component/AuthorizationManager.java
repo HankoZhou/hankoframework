@@ -23,9 +23,8 @@ import java.util.*;
 
 /**
  * 鉴权管理器，用于判断是否有资源的访问权限
- *
- * @author macro
- * @date 2020/6/19
+ * 基于webflux
+ * @author hanko
  */
 @Slf4j
 @Component

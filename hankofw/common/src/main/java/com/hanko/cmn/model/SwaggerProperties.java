@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 /**
  * Swagger自定义配置
  *
- * @author macro
+ * @author hanko
  * @date 2020/7/16
  */
 @Data

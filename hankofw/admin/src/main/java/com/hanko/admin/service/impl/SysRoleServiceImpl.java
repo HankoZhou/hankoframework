@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  * 系统角色表 服务实现类
  * </p>
  *
- * @author com.hanko.demo
+ * @author hanko
  * @since 2021-02-02
  */
 @Service

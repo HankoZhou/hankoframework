@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 /**
- * 角色与资源对应关系(用户权限)
+ * 用户权限-角色与资源对应关联关系
  *
  * @author hanko
  * @date 2021/2/20
@@ -20,7 +20,7 @@ public class PermissionProvider {
     private final SysPermissionService sysPermissionService;
 
     /**
-     * 项目启动时把角色与资源对应关系加载至redis
+     * 项目启动时把角色与其对应的资源关联关系加载至Redis
      */
     @PostConstruct
     public void initPermission(){

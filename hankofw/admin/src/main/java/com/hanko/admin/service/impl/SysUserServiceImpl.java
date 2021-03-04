@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
  * 用户表 服务实现类
  * </p>
  *
- * @author com.hanko.demo
+ * @author hanko
  * @since 2021-02-02
  */
 @Service

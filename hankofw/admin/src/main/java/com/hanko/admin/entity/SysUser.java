@@ -17,7 +17,7 @@ import java.util.List;
  * 用户表
  * </p>
  *
- * @author com.hanko.demo
+ * @author hanko
  * @since 2021-02-02
  */
 @Data

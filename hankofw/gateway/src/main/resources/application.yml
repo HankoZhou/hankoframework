@@ -41,6 +41,5 @@ security:
       - "/**/*.css"
       - "/**/*.png"
       - "/**/*.ico"
-      # 放开获取token url
       - "/auth/oauth/token"
 

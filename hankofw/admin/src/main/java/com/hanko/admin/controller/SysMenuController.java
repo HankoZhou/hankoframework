@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 菜单资源 前端控制器
  * </p>
  *
- * @author com.hanko.demo
+ * @author hanko
  * @since 2021-02-02
  */
 @RestController

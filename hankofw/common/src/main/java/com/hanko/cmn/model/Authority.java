@@ -3,7 +3,7 @@ package com.hanko.cmn.model;
 import lombok.Data;
 
 /**
- * @author Mr.Yangxiufeng
+ * @author hanko
  * @date 2020-10-29
  * @time 14:38
  */

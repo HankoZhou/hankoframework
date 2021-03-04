@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
  * 系统角色表
  * </p>
  *
- * @author com.hanko.demo
+ * @author hanko
  * @since 2021-02-02
  */
 @Data

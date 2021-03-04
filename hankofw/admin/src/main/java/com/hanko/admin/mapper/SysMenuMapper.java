@@ -8,7 +8,7 @@ import com.hanko.admin.entity.SysMenu;
  * 菜单资源 Mapper 接口
  * </p>
  *
- * @author com.hanko.demo
+ * @author hanko
  * @since 2021-02-02
  */
 public interface SysMenuMapper extends BaseMapper<SysMenu> {

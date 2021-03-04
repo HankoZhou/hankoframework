@@ -16,8 +16,7 @@ import java.util.Map;
 
 /**
  * 获取RSA公钥接口
- *
- * @author macro
+ * @author hanko
  * @date 2020/6/19
  */
 @RestController

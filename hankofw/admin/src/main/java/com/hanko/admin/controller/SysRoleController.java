@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * 系统角色表 前端控制器
  * </p>
  *
- * @author com.hanko.demo
+ * @author hanko
  * @since 2021-02-02
  */
 @Controller

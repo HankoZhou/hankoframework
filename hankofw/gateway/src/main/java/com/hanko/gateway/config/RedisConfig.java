@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * Redis相关配置
  *
- * @author macro
+ * @author hankol
  * @date 2020/6/19
  */
 @Configuration

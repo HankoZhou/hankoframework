@@ -9,7 +9,7 @@ import com.hanko.cmn.model.SysUserDetails;
  * 用户表 服务类
  * </p>
  *
- * @author com.hanko.demo
+ * @author hanko
  * @since 2021-02-02
  */
 public interface SysUserService extends IService<SysUser> {

@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
  * 菜单资源 服务实现类
  * </p>
  *
- * @author com.hanko.demo
+ * @author hanko
  * @since 2021-02-02
  */
 @Service

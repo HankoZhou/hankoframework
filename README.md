@@ -4,7 +4,7 @@
 
 ## 一、架构设计
 
-![](D:\downloads\HanoFramework-SpringCloud微服务分布式架构.png)
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0304/194233_9977f5b2_922663.png "HanoFramework-SpringCloud微服务分布式架构.png")
 
 ## 二、技术选型
 

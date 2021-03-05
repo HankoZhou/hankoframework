@@ -7,8 +7,9 @@
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0304/194233_9977f5b2_922663.png "HanoFramework-SpringCloud微服务分布式架构.png")
 
 ## 二、技术选型
+<escape>
 
-|                    |                                            |
+|                    | 版本/名称                                  |
 | ------------------ | ------------------------------------------ |
 | SpringCloud        | SpringCloud Hoxton.SR9                     |
 |                    | Springboot 2.3.5.RELEASE                   |
@@ -23,11 +24,14 @@
 | 注册中心、配置中心 | Nacos                                      |
 | 网关               | gateway                                    |
 | 安全               | springsecurity+oauth2+jwt+gateway(webflux) |
-|                    |                                            |
-|                    |                                            |
-|                    |                                            |
+| 前端               | vue                                        |
+|                    | vue-router                                 |
+|                    | vuex                                       |
+|                    | Element                                    |
+|                    | Axios                                      |
+|                    | mockjs                                     |
 
-
+</escape>
 
 
 ## 三、表设计

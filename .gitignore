@@ -1,0 +1,15 @@
+/hankofw/admin/.gitignore
+/hankofw/auth/.gitignore
+/hankofw/common/.gitignore
+/hankofw/gateway/.gitignore
+/hankofw/generator/.gitignore
+/hankofw/register/.gitignore
+/hankofw/.gitignore
+/hankofw/.mvn/wrapper/maven-wrapper.jar
+/hankofw/admin/.mvn/wrapper/maven-wrapper.jar
+/hankofw/auth/.mvn/wrapper/maven-wrapper.jar
+/hankofw/common/.mvn/wrapper/maven-wrapper.jar
+/hankofw/gateway/.mvn/wrapper/maven-wrapper.jar
+/hankofw/generator/.mvn/wrapper/maven-wrapper.jar
+/hankofw/register/.mvn/wrapper/maven-wrapper.jar
+/log.md

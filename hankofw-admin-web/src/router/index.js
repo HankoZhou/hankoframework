@@ -23,40 +23,24 @@ export const constantRouterMap = [
 
 export const asyncRouterMap = [
   {
-    path:'/ums',
+    path:'/admin',
     component: Layout,
-    redirect: '/ums/admin',
-    name: 'ums',
-    meta: {title: '权限管理', icon: 'ums'},
+    redirect: '/admin/user',
+    name: 'admin',
+    meta: {title: '用户中心', icon: 'admin'},
     children: [
       {
-        path: 'admin',
-        name: 'admin',
-        component: () => import('@/views/ums/admin/index'),
-        meta: {title: '用户管理', icon: 'ums-admin'}
+        path: 'user',
+        name: 'user',
+        component: () => import('@/views/admin/user/index'),
+        meta: {title: '用户管理', icon: 'admin-user'}
       },
       {
         path: 'role',
         name: 'role',
-        component: () => import('@/views/ums/role/index'),
-        meta: {title: '角色管理', icon: 'ums-role'}
+        component: () => import('@/views/admin/role/index'),
+        meta: {title: '角色管理', icon: 'admin-role'}
       }
-    ]
-  },
-  {
-    path:'/sys',
-    component: Layout,
-    redirect: '/sys/menu',
-    name: 'sys',
-    meta: {title: '系统管理', icon: 'sys'},
-    children: [
-      {
-        path: 'flash',
-        name: 'flash',
-        component: () => import('@/views/menu/index'),
-        meta: {title: '系统管理', icon: 'sms-flash'}
-      }
-
     ]
   },
   {path: '*', redirect: '/404', hidden: true}

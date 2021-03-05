@@ -265,16 +265,16 @@
         })
       },
       handleSelectMenu(index,row){
-        this.$router.push({path:'/ums/allocMenu',query:{roleId:row.id}})
+        // this.$router.push({path:'/ums/allocMenu',query:{roleId:row.id}})
       },
       handleSelectResource(index,row){
-        this.$router.push({path:'/ums/allocResource',query:{roleId:row.id}})
+        // this.$router.push({path:'/ums/allocResource',query:{roleId:row.id}})
       },
       getList() {
         this.listLoading = true;
         fetchList(this.listQuery).then(response => {
           this.listLoading = false;
-          this.list = response.data.list;
+          this.list = response.data.data;
           this.total = response.data.total;
         });
       }
